@@ -298,8 +298,8 @@ async function callAI(systemPrompt,userMessage){
       })
     });
     const d=await r.json();
-    const txt=d?.candidates?.[0]?.content?.parts?.map(p=>p.text||'').join('
-');
+    const txt=d?.candidates?.[0]?.content?.parts?.map(p=>p.text||'').join('\n');
+
     return txt||'Contact us at sales@universalcorporatewear.com!';
   }catch(e){
     return 'Call us at (709) 753-5044!';
@@ -327,8 +327,8 @@ async function send(){
       })
     });
     const d=await r.json();
-    const rp=d?.candidates?.[0]?.content?.parts?.map(p=>p.text||'').join('
-')||'Contact us!';
+    const rp=d?.candidates?.[0]?.content?.parts?.map(p=>p.text||'').join('\n');
+||'Contact us!';
     tp.remove(); addM(rp,'bot'); cH.push({role:'assistant',content:rp});
   }catch(e){
     tp.remove(); addM('Call (709) 753-5044!','bot');
